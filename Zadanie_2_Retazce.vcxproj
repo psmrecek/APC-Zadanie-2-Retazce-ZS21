@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Old_version.cpp" />
     <ClCompile Include="Smrecek_Retazce.cpp" />
   </ItemGroup>
   <ItemGroup>
