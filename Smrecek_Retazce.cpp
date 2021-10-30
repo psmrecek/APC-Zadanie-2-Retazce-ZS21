@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <cstring>
 
 /// <summary>
 /// Function translates absolute file coordinates of occurence to line format.
@@ -54,7 +55,7 @@ void findNL(const std::string& buffer, const size_t& sizeBuff, size_t& pendingCh
 }
 
 /// <summary>
-/// Function looks for the string x in the chunk.
+/// Function looks for the string X in the chunk.
 /// </summary>
 /// <param name="buffer">chunk of text loaded from file</param>
 /// <param name="sizeBuff">size of chunk</param>
