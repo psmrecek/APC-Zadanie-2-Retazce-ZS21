@@ -1,0 +1,11 @@
+Zadanie_2_Retazce.exe Example1.txt aaa 4
+
+Zadanie_2_Retazce.exe Example2.txt aaa 2
+
+Zadanie_2_Retazce.exe Example3.txt aaabaaa 2
+
+Zadanie_2_Retazce.exe Example4.txt bbb 20
+
+Zadanie_2_Retazce.exe MyExample.txt bbb 20
+
+Zadanie_2_Retazce.exe MyExample.txt bbb 9
