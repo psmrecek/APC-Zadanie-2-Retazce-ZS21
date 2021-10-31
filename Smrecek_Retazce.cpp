@@ -10,11 +10,11 @@
 /// </summary>
 /// <param name="position">absolute coordinates of occurrence</param>
 /// <param name="lineSizes">vector of line sizes</param>
-void decoder(const uint64_t& position, std::vector<size_t>& lineSizes)
+void decoder(const uint64_t& position, std::vector<uint64_t>& lineSizes)
 {
 	uint64_t sumOfLines = 0;
 
-	for (size_t i = 0; i < lineSizes.size(); i++)
+	for (uint64_t i = 0; i < lineSizes.size(); i++)
 	{
 		sumOfLines += lineSizes[i];
 		if (sumOfLines > position)
@@ -33,13 +33,13 @@ void decoder(const uint64_t& position, std::vector<size_t>& lineSizes)
 /// <param name="sizeBuff">size of chunk</param>
 /// <param name="pendingCharacters">number of characters that have not yet been added to the line</param>
 /// <param name="lineSizes">vector of line sizes</param>
-void findNL(const std::string& buffer, const size_t& sizeBuff, size_t& pendingCharacters, std::vector<size_t>& lineSizes)
+void findNL(const std::string& buffer, const uint64_t& sizeBuff, uint64_t& pendingCharacters, std::vector<uint64_t>& lineSizes)
 {
 	std::string newLine = "\n";
-	size_t off = 0;
+	uint64_t off = 0;
 
-	size_t positionNL = buffer.find(newLine, off);
-	size_t lastPositionNL = 0;
+	uint64_t positionNL = buffer.find(newLine, off);
+	uint64_t lastPositionNL = 0;
 
 	while (positionNL != std::string::npos)
 	{
@@ -67,7 +67,7 @@ void findNL(const std::string& buffer, const size_t& sizeBuff, size_t& pendingCh
 /// <param name="lastPosition">number of last occurrence</param>
 /// <param name="lastPositionPrinted">true if the last occurrence was printed, else otherwise</param>
 /// <param name="lineSizes">vector of line sizes</param>
-void findX(const std::string& buffer, const size_t& sizeBuff, const std::string& X, const size_t& sizeX, const uint32_t N, const size_t buffCounter, bool lastCharsEmpty, uint64_t& lastPosition, bool& lastPositionPrinted, std::vector<size_t>& lineSizes)
+void findX(const std::string& buffer, const uint64_t& sizeBuff, const std::string& X, const uint64_t& sizeX, const uint32_t N, const uint64_t buffCounter, bool lastCharsEmpty, uint64_t& lastPosition, bool& lastPositionPrinted, std::vector<uint64_t>& lineSizes)
 {
 	uint64_t positionX = buffer.find(X, 0);
 
@@ -116,10 +116,10 @@ void findX(const std::string& buffer, const size_t& sizeBuff, const std::string&
 /// <param name="N">distance</param>
 /// <param name="sizeBuff">size of chunk</param>
 /// <returns>true if the search was performed correctly, false otherwise</returns>
-bool file_read(std::ifstream& ifs, const std::string X, const uint32_t N, size_t sizeBuff = 1024)
+bool file_read(std::ifstream& ifs, const std::string X, const uint32_t N, uint64_t sizeBuff = 1024)
 {
-	size_t sizeX = X.size() - 1;
-	size_t buffCounter = 0;
+	uint64_t sizeX = X.size() - 1;
+	uint64_t buffCounter = 0;
 
 	std::string buffer;
 	buffer.resize(sizeBuff);
@@ -134,8 +134,8 @@ bool file_read(std::ifstream& ifs, const std::string X, const uint32_t N, size_t
 
 	uint64_t lastPosition = std::string::npos;
 
-	std::vector<size_t> lineSizes;
-	size_t pendingCharacters = 1;
+	std::vector<uint64_t> lineSizes;
+	uint64_t pendingCharacters = 1;
 
 	// Fill the line size vector
 	while (ifs.read(buffer.data(), buffer.size()))
@@ -214,7 +214,7 @@ int main(int argc, char* argv[])
 	}
 
 	std::string X{ argv[2] };
-	for (size_t i = 0; i < X.size(); i++)
+	for (uint64_t i = 0; i < X.size(); i++)
 	{
 		if (int(X[i]) < 0 || int(X[i]) > 127)
 		{
@@ -224,7 +224,7 @@ int main(int argc, char* argv[])
 
 	std::string nHelp{ argv[3] };
 
-	for (size_t i = 0; i < nHelp.length(); i++)
+	for (uint64_t i = 0; i < nHelp.length(); i++)
 	{
 		auto character = nHelp[i];
 		if (character < '0' || character > '9')
